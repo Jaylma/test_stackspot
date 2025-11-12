@@ -1,0 +1,96 @@
+commit 474608008fdfd687c39b36cedf1e05c8ec69e3e8
+Author: Jaylma <jaylma.souzasoares@gmail.com>
+Date:   Tue Nov 11 21:07:44 2025 -0300
+
+    Login app com erros para análise do Dev Helper
+
+diff --git a/.DS_Store b/.DS_Store
+new file mode 100644
+index 0000000..332c842
+Binary files /dev/null and b/.DS_Store differ
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000..2a0c39b
+--- /dev/null
++++ b/index.html
+@@ -0,0 +1,20 @@
++<!DOCTYPE html>
++<html lang="pt-BR">
++<head>
++  <meta charset="UTF-8">
++  <title>Login App</title>
++  <link rel="stylesheet" href="style.css">
++</head>
++<body>
++  <div class="container">
++    <h2>Página de Login</h2>
++    <form id="form-login">
++      <input id="user" type="text" placeholder="Usuário">
++      <input id="user" type="password" placeholder="Senha">
++      <button onclick="login()">Entrar</button>
++    </form>
++    <p id="error"></p>
++  </div>
++  <script src="script.js"></script>
++</body>
++</html>
+diff --git a/script.js b/script.js
+new file mode 100644
+index 0000000..a03a3b0
+--- /dev/null
++++ b/script.js
+@@ -0,0 +1,16 @@
++function login() {
++    var user = document.getElementById("user").value;
++    var pass = document.getElementById("user").value; // id duplicado de propósito
++  
++    if (user == "" || pass == "") {
++      document.getElementById("error").innerText = "Preencha todos os campos";
++      return false;
++    }
++  
++    if (user == "admin" && pass == "12345") { // vulnerabilidade
++      alert("Login realizado com sucesso!");
++    } else {
++      document.getElementById("error").innerText = "Usuário ou senha incorretos";
++    }
++  }
++  
+\ No newline at end of file
+diff --git a/style.css b/style.css
+new file mode 100644
+index 0000000..9eb176e
+--- /dev/null
++++ b/style.css
+@@ -0,0 +1,30 @@
++body {
++    background-color: #fafafa;
++    font-family: Arial;
++    margin: 0;
++    padding: 0;
++  }
++  
++  .container {
++    width: 50%;
++    margin-left: 30%;
++    background: #fff;
++    box-shadow: 0 0 5px #ccc;
++    padding: 50px;
++  }
++  
++  input {
++    display: block;
++    margin: 10;
++    padding: 10;
++    width: 90%;
++  }
++  
++  button {
++    background: blue;
++    color: white;
++    padding: 10px;
++    border: none;
++    cursor: pointer;
++  }
++  
+\ No newline at end of file
