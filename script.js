@@ -3,7 +3,7 @@ function login() {
     var pass = document.getElementById("user").value; // id duplicado de propósito
   
     if (user == "" || pass == "") {
-      document.getElementById("error").innerText = "Preencha todos os campos";
+      document.getElementById("error").innerText = "Preencha todos os campos na tela";
       return false;
     }
   
